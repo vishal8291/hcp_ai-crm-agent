@@ -1,0 +1,16 @@
+# Secrets and API Keys
+.env
+
+# Python Virtual Environment
+venv/
+__pycache__/
+*.pyc
+
+# Node Modules (Frontend)
+node_modules/
+build/
+dist/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
