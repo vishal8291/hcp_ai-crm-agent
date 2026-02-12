@@ -14,7 +14,7 @@ function App() {
     dispatch(addChatMessage(userMsg));
 
     try {
-      const res = await axios.post("https://hcp-crm-backend.vercel.app/chat", { message: input });
+      const res = await axios.post("https://hcp-ai-crm-backend.vercel.app/", { message: input });
       console.log("Backend Data Received:", res.data.data);
       if (res.data.data) {
         dispatch(updateField(res.data.data));
