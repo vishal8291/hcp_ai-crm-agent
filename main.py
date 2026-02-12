@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime
+from sqlalchemy import create_all, create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 from datetime import datetime
 
@@ -28,7 +29,9 @@ app.add_middleware(
 )
 
 # --- DATABASE SETUP ---
-DATABASE_URL = "postgresql://agency_admin:Prii1310@localhost:5432/hcp_crm_db" 
+DATABASE_URL = os.getenv("DATABASE_URL")
+f DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
